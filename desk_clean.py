@@ -46,3 +46,39 @@ def folder_organizer(item):
                     break
     else:
         os.rmdir(path + item)
+
+def file_organizer(item):
+    """
+       The function takes the name of a file as argument,
+       first it checks if the size of the file is diverse from 0
+       then it tries to create the main folder(Desktop_Data_Files)
+       if it doesn't already exist then it try to create a folder
+       for the specified file format, finally it move the file
+       to that folder, if the file with the same name already exists
+       then it rename it then move it.
+    """
+
+    if os.path.getsize(path + item) != 0:
+        name_format = os.path.splitext(item)
+        folder_name = name_format[1][1:]
+        try:
+            os.mkdir(os.path.join(path, files_folder))
+        except:
+            pass
+        try:
+            os.mkdir(os.path.join(path + files_folder + "\\", folder_name))
+        except:
+            pass
+        if item not in os.listdir(path + files_folder + "\\" + folder_name + "\\"):
+            os.rename(path + item, path + files_folder + "\\" + folder_name + "\\" + item)
+        else:
+            while True:
+                generated_number = str(random.randint(1000, 9999))
+                if item + generated_number not in os.listdir(path + files_folder + "\\"
+                                                             + folder_name + "\\"):
+                    os.rename(path + item, path + files_folder + "\\"
+                              + folder_name + "\\" + name_format[0]
+                              + generated_number + name_format[1])
+                    break
+    else:
+        os.remove(path + item)
