@@ -82,3 +82,22 @@ def file_organizer(item):
                     break
     else:
         os.remove(path + item)
+
+def clean_desktop():
+    """
+       This is the main function, first it checks if the desktop
+       need to be cleaned by calling the check_desktop function,
+       if it does then start a for loop to iterate over desktop
+       and check if the item is a folder then call the folder_organizer
+       function otherwise if it's a file call the file_organizer function.
+    """
+
+    desktop = check_desktop()
+    if desktop:
+        for item in desktop:
+            if item != folders_folder and item != files_folder and ".lnk" not in item:
+                if os.path.isdir(path + item):
+                    folder_organizer(item)
+                elif os.path.isfile(path + item) and item != folders_folder and item != files_folder:
+                    file_organizer(item)
+
