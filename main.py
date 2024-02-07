@@ -13,7 +13,39 @@ def popup_window(message):
     The function take a message as argument and create a popup window.
     """
 
-    pass
+    pop = Tk()
+    pop.attributes('-topmost', 1)
+    pop.grab_set()
+    pop.configure(bg="#131921")
+    pop.resizable(False, False)
+    pop.overrideredirect(True)
+    pop_label = Label(pop, text=message, font="Italic 16", bg="#131921", fg="white")
+    pop_label.pack(pady=(10, 70), padx=10)
+    pop_button = Button(pop, text="Clean Now",
+                        background="#232f3e",
+                        foreground="white",
+                        activebackground="#283f5b",
+                        activeforeground="white",
+                        highlightcolor='red',
+                        width=10,
+                        font="Italic 16",
+                        command=lambda: [clean_desktop(), pop.destroy()])
+    pop_button.place(x=34, y=50)
+    pop_button = Button(pop, text="Clean Later",
+                        background="#232f3e",
+                        foreground="white",
+                        activebackground="#283f5b",
+                        activeforeground="white",
+                        highlightcolor='red',
+                        width=10,
+                        font="Italic 16",
+                        command=pop.destroy)
+    pop_button.place(x=175, y=50)
+    pop.update_idletasks()
+    posx = str((pop.winfo_screenwidth() // 2) - (pop.winfo_width() // 2))
+    posy = str((pop.winfo_screenheight() // 2) - (pop.winfo_height() // 2))
+    pop.geometry(f"{pop.winfo_width()}x{pop.winfo_height()}+{posx}+{posy}")
+    pop.mainloop()
 
 def check_pc_health():
     """
@@ -77,7 +109,7 @@ if __name__ == "__main__":
     thread_check_desktop = threading.Thread(daemon=True, target=check_desktop_status)
     thread_check_desktop.start()
     #Created on system tray bar a menu
-    image = Image.open("favicon.ico")
+    image = Image.open("officeicon.ico")
     menu = item("Clean Desktop", optimizer), item("Quit", quit_window)
     icon = pystray.Icon("name", image, str(check_pc_health()), menu)
     #Created a thread object that creates a separate process and run change_title function
