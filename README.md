@@ -29,8 +29,7 @@ Right-Click on the icon then select Clean Desktop:<br/>
 <img src="https://github.com/Dan3091/CleanDesk-Organizer/blob/master/Image_0002.jpg"/>
 <br />
 <br />
-The app will clean the desktop:
-​:<br/>
+The app will clean the desktop​:<br/>
 <img src="https://github.com/Dan3091/CleanDesk-Organizer/blob/master/Image_0003.jpg"/>
 <br />
 <br />
