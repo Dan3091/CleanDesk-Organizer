@@ -21,7 +21,7 @@ Launch the app an icon will appear in your system tray: <br/>
 <img src="https://github.com/Dan3091/CleanDesk-Organizer/blob/master/Image_0000.jpg"/>
 <br />
 <br />
-Move the cursor over the icon and an info window will appear with the CPU, RAM and DISK status will appear:  <br/>
+Move the cursor over the icon and an info window will appear with the CPU, RAM and DISK status:  <br/>
 <img src="https://github.com/Dan3091/CleanDesk-Organizer/blob/master/Image_0001.jpg"/>
 <br />
 <br />
