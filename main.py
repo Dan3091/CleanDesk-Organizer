@@ -44,7 +44,18 @@ def check_desktop_status():
     more than 10 folders and files then it call a popup window.
     """
 
-    pass
+    while True:
+        time.sleep(1800)
+        desktop = check_desktop()
+        counter = 0
+        if desktop:
+            for item in desktop:
+                if item != files_folder and item != folders_folder and "lnk" not in item:
+                    counter += 1
+        if exit_event.is_set():
+            break
+        if counter > 10:
+            popup_window("Your desktop need to be cleaned!")
 
 def optimizer(icon, item):
     """
